@@ -1,0 +1,77 @@
+body{
+    font-family: sans-serif;
+    background: #1f1e1e;
+    display: flex;
+    justify-content: center;
+    /*font-family: 'Anton', sans-serif;*/ 
+}
+
+#Login-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateY(100%);
+}
+
+#Form-title{
+    color: white;
+    text-transform: uppercase;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    font-family: 'Fredoka One', cursive;
+}
+
+#Login-username, #Login-password{
+    display: flex;
+    flex-direction: column;
+}
+
+#Form-section input[type = "text"], #Form-section input[type = "password"]{
+    border: 0;
+    background: none;
+    display: inline-flex;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-align: center;
+    border: 2px solid #FFC312;
+    padding: 10px 6px;
+    width: 20em;
+    outline: none;
+    color: white;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+
+#Form-section input[type = "text"]:focus, #Form-section input[type = "password"]:focus{
+    width: 16em;
+    border-color: #00a8ff;
+}
+
+#Form-section input[type = "submit"]{
+    border: 0;
+    background: none;
+    display: inline-flex;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+    border: 2px solid #f0932b;
+    padding: 8px 40px;
+    outline: none;
+    color: white;
+    border-radius: 18px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+#Form-section input[type = "submit"]:hover{
+    background: #f0932b;
+}
+
+
+#Forgot-help{
+    color: #adadad;
+    font-size: 12px;
+}

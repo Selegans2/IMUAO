@@ -1,0 +1,48 @@
+/* Barra de busqueda */
+#home-search-container{
+    height: 2.5em;
+}
+
+#home-search-logo{
+    height: 100%;
+}
+
+#search-bar{
+    position: relative;
+    height: auto;
+    width: 70%;
+    margin: 0 !important;
+
+    padding-left: 0.5em;
+    margin-top: 0.8em !important;
+}
+
+#search-bar-icon{
+    max-height: 1em;
+    margin: 0 !important;
+    right: 10em;
+}
+
+
+
+/*Profile img*/
+#home-profile{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 2.5em;
+}
+
+#home-profile-container{
+    margin: 0;
+}
+
+#home-profile-img{
+    border-radius: 50%;
+    height: 2.5em;
+}
+
+#home-profile-description{
+    text-align: left;
+    padding: 0;
+    line-height: 16px;
+}
