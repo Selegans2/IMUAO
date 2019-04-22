@@ -20,7 +20,7 @@ export default class Header extends Component {
         return (
 
             <div className="col-4">
-                <div className="small-card-base" onClick={() => this.props.func(this.props.state, this.props.id)}>
+                <div className="small-card-base animated flipInX" onClick={() => this.props.func(this.props.state, this.props.id)}>
                     <img className="small-card-profile-image" src={this.props.img}></img>
 
                     <div className="row align-items-end justify-content-center">

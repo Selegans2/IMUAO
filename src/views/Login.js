@@ -8,13 +8,15 @@ export default class Login extends Component{
         super(props);
         this.state = {
             email:"",
-            password:""
+            password:"",
+            errorLogin: ""
         };
         this.email = React.createRef();
         this.password = React.createRef();
     }
 
-    handleSumit = event => {
+    handleSubmit = event => {
+        console.log("shupalaaa");
         var me = this;
         console.log(me.state.email);
         firebase
@@ -26,6 +28,7 @@ export default class Login extends Component{
           })
           .catch(function(error) {
             var errorMessage = error.message;
+            me.setState({errorLogin: errorMessage});
             console.log("Error", errorMessage);
           });
       };
@@ -50,19 +53,21 @@ export default class Login extends Component{
 
                 <span id="Form-title"> Login </span>
 
-                <form action="/" method="post" id="Form-section" onSubmit={this.handleSubmit}>
+                <form id="Form-section" onSubmit={this.handleSubmit}>
                     <div id="Login-username">
                         <input type="text" placeholder="Username" id="username" ref={this.email} value={this.props.email} onChange={this.handleChange}  required/>
                     </div>
 
                     <div id="Login-password">
                         <input type="password" placeholder="Password" ref={this.password} value={this.props.password} onChange={this.handleChange} required/>
+                        <a href="" id="Forgot-help">{this.state.errorLogin}</a>
                     </div>
 
                     <input type="submit" className="button button-block" value="Login"/>
                 </form>
                 
                 <a href="" id="Forgot-help">Forgot Username/Password?</a>
+                
 
             </div>
         );

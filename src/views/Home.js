@@ -231,7 +231,7 @@ export default class Home extends Component {
 
 
 
-                        <div id="card-base">
+                        <div id="card-base" className="small-card-base animated flipInY"> 
 
                             <div className="no-margin no-padding" style={MainCardstyle}>
                                 <Card func={this.displayMainCard} state={this} name={this.state.currentData.name + " " + this.state.currentData.lastname} code={this.state.currentData.code} phone={this.state.currentData.phone} email={this.state.currentData.email} img="img/Me.jpg" />
