@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css/dist/js/materialize.min.js'
-/*import "./Card.css";*/
+import "./Skills.css";
 
 
 export default class Skills extends Component {
@@ -26,9 +26,9 @@ export default class Skills extends Component {
             <div className="col-12 card-skill-container">
             <div className="row justify-content-start align-items-center">
 
-                <div className="col-3 align-self-center"> <p>{this.props.type}</p> </div>
+                <div className="col-4 align-self-center"> <p>{this.props.type}</p> </div>
 
-                <div className="col-9 align-self-center">
+                <div className="col-8 align-self-center">
                     <div className="card-skill-meter">
                         <div className="meter" style={style}></div>
                     </div>

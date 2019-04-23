@@ -25,7 +25,6 @@
 
 
 
-
 /*User Card*/
 .no-padding{
     padding: 0 !important;
@@ -64,7 +63,7 @@
 
 #card-name{
     color: white;
-    font-size: 4em;
+    font-size: 3.4em;
     line-height: 1.1em;
     font-weight: bold;
     margin-top: 1em;
@@ -76,10 +75,14 @@
     color: white;
     text-align: center;
     font-size: 2em;
-    line-height: 0.5em;
+    line-height: 1em;
     font-weight: bold;
     margin-bottom: 0.2em;
     overflow: hidden;
+}
+
+#card-info-fullname{
+    margin: 0em !important;
 }
 
 #card-info-job{
@@ -132,115 +135,6 @@
     transition: 0.25s;
     cursor: pointer;
 }
-#card-option-skills:hover, #card-option-skills:active{
-    background: rgba(36,219,255,1); 
-    background: -moz-linear-gradient(left, rgba(36,219,255,1) 0%, rgba(39,58,230,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(36,219,255,1)), color-stop(100%, rgba(39,58,230,1)));
-    background: -webkit-linear-gradient(left, rgba(36,219,255,1) 0%, rgba(39,58,230,1) 100%);
-    background: -o-linear-gradient(left, rgba(36,219,255,1) 0%, rgba(39,58,230,1) 100%);
-    background: -ms-linear-gradient(left, rgba(36,219,255,1) 0%, rgba(39,58,230,1) 100%);
-    background: linear-gradient(to right, rgba(36,219,255,1) 0%, rgba(39,58,230,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#24dbff', endColorstr='#273ae6', GradientType=1 );
-}
-#card-option-portfolio:hover{
-    background: rgba(235,17,93,1);
-    background: -moz-linear-gradient(left, rgba(235,17,93,1) 0%, rgba(247,124,37,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(235,17,93,1)), color-stop(100%, rgba(247,124,37,1)));
-    background: -webkit-linear-gradient(left, rgba(235,17,93,1) 0%, rgba(247,124,37,1) 100%);
-    background: -o-linear-gradient(left, rgba(235,17,93,1) 0%, rgba(247,124,37,1) 100%);
-    background: -ms-linear-gradient(left, rgba(235,17,93,1) 0%, rgba(247,124,37,1) 100%);
-    background: linear-gradient(to right, rgba(235,17,93,1) 0%, rgba(247,124,37,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb115d', endColorstr='#f77c25', GradientType=1 );
-}
-
-
-
-.card-skill-container{
-    max-height: 2.3em;
-}
-
-.card-skill-meter { 
-	width: 100%; /* Full width */
-    background-color: #ddd; /* Grey background */
-    border-radius: 20px;
-    height: 1em;
-}
-
-.meter{
-    display: block;
-    height: 100%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-   
-    background: rgba(18,235,55,1);
-    background: -moz-linear-gradient(left, rgba(18,235,55,1) 0%, rgba(39,198,230,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(18,235,55,1)), color-stop(100%, rgba(39,198,230,1)));
-    background: -webkit-linear-gradient(left, rgba(18,235,55,1) 0%, rgba(39,198,230,1) 100%);
-    background: -o-linear-gradient(left, rgba(18,235,55,1) 0%, rgba(39,198,230,1) 100%);
-    background: -ms-linear-gradient(left, rgba(18,235,55,1) 0%, rgba(39,198,230,1) 100%);
-    background: linear-gradient(to right, rgba(18,235,55,1) 0%, rgba(39,198,230,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#12eb37', endColorstr='#27c6e6', GradientType=1 );
-
-    position: relative;
-    overflow: hidden;
-    /*width: 65%;*/
-}
-
-.card-skill-phrase{
-    margin-top: 5em;
-}
-
-
-
-
-.work{
-    margin-bottom: 1em !important;
-    cursor: pointer;
-}
-
-
-.card-portoflio-image{
-    min-width: 100%;
-    max-height: 5em;
-    overflow: hidden;
-}
-
-.card-portoflio-image > img{
-	max-width: 100%;
-	height: auto;
-    object-fit: cover;
-    text-align: center;
-}
-
-
-.card-portfolio-info{
-    font-size: 12px;
-    line-height: 1.5px;
-    margin-top: 1.0em;
-}
-
-.card-portfolio-more{
-    margin: 0;
-    padding: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -295,48 +189,4 @@
 #card-button-front > button > div > img{
     max-width: 100%;
     max-height: 100%;
-}
-
-
-
-
-
-/*Small user cards*/
-.small-card-base{
-    background: black;
-    height: 20em;
-    padding-top: 10em;
-    margin-bottom: 3em;
-    cursor: pointer;
-
-    -webkit-box-shadow: 2px 10px 8px -4px rgba(0,0,0,0.42);
-    -moz-box-shadow: 2px 10px 8px -4px rgba(0,0,0,0.42);
-    box-shadow: 2px 10px 8px -4px rgba(0,0,0,0.42);
-}
-
-.small-card-name{
-    color: white;
-    font-size: 4em;
-    line-height: 1.1em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-    overflow: hidden;
-}
-
-.small-card-profile-image{
-    width: 90%;
-    height: 87%;
-    margin: auto;
-    
-    position: absolute;
-    object-fit: cover;
-    display: inline-block;
-    vertical-align: middle;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    opacity: 0.4; 
-    text-align: center;
 }

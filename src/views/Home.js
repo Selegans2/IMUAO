@@ -49,9 +49,9 @@ export default class Home extends Component {
     }
 
 
-
+    //Este metodo muestra y oculta las secciones de la Maincard. Dependiendo del valor se ocultan o muestra
+    //Las skills, el portafolio o el perfil con su informacion general. Se ejecuta en el ComponentDidMount
     displayMainCard(e, number) {
-        //Activa el objeto de main card       
         if (number == 1) {
             e.setState({ hideMainInfo: true });
             e.setState({ hideSkills: true });
@@ -71,7 +71,8 @@ export default class Home extends Component {
     }
 
 
-
+    //Este metodo se realiza antes del render. En este metodo se hace el llamado a la base de datos
+    //y se trae la consulta con todos los datos de los usuarios montados en esta.
     componentDidMount() {
         var component = this;
         this.displayMainCard(this, 1);
@@ -126,24 +127,31 @@ export default class Home extends Component {
     }
 
 
-    
+    //Este metodo se ejecuta cuando el usuario presiona click sobre cualquiera de las card mas pequeñas.
+    //Este metodo toma la llave que contenga la Card clickeada y llena el objeto llamado "CurrentData" con
+    //los valores del usuario relacionado a la llave.
     selectCard(e, value) {
         e.setState({ currentUser: value });
         console.log("Card seleccionada: " + value);
 
         var ex = {};
-        ex = (e.state.data && Object.keys(e.state.data).map((i) => {
+        let tempAux = null;
+        ex = (e.state.data && Object.keys(e.state.data).map((i, nuIndex) => {
             if (i === value) {
+                tempAux = nuIndex
+                debugger
                 return e.state.data[i];
             }
         }));
-
-        e.setState({ currentData: ex[0] });
+        e.setState({ currentData: ex[tempAux ? tempAux : 0] });
         console.log(e.state.currentData.name);
     }
 
 
+    //#region ===> Metodos de renderizado de componentes
 
+    //Este metodo renderiza las cartas pequeñas organizadas por su llave en el render.
+    //El metodo solo renderiza hasta 6 cards con el fin de no dañar el diseño de la pagina.
     renderSmallCards() {
         //Se sacan las llaves de todos los usuarios, es decir, el identificador
         var worksKeys = [""];
@@ -158,16 +166,17 @@ export default class Home extends Component {
 
         //Crea las tarjetas con el nombre de usuario
         const movieItems = [];
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 6; i++) {
             // Verifica que hayan los resultados necesarios
             if (this.state.dataCount > i) {
-                movieItems.push(<Scard func={this.selectCard} state={this} name={usersNames[i]} id={worksKeys[i]} key={worksKeys[i]} />);
+                movieItems.push(<Scard func={this.selectCard} state={this} name={usersNames[i]} img="img/tattoo.jpg" id={worksKeys[i]} key={worksKeys[i]} />);
             }
         }
         return movieItems;
     }
 
-
+    //Este metodo renderiza todas las skills del usuario que fue seleccionado con el metodo "SelectCard()"
+    //y despliega el componente Skill en relacion con la cantidad que se haya encontrado en la base de datos.
     renderSkils() {
         var me = this;
         const movieItems = [];
@@ -178,8 +187,9 @@ export default class Home extends Component {
 
         return movieItems;
     }
-
-
+    
+    //Este metodo renderiza todas los trabajos del usuario que fue seleccionado con el metodo "SelectCard()"
+    //y despliega el componente Portfolio en relacion con la cantidad que se haya encontrado en la base de datos.
     renderWorks() {
         var me = this;
         var worksKeys = [];
@@ -196,59 +206,56 @@ export default class Home extends Component {
 
         return movieItems;
     }
-    
 
+    //Este metodo abre en una nueva pestaña una url dada. Este metodo se ejecuta en el onClick del
+    //componente de portfolio.
     openWork(url) {
         var win = window.open(url, '_blank');
         win.focus();
-      }
+    }
+
+    //#endregion
 
 
 
     //render es un metodo que si debe retornar un html
     render() {
 
+        //Estas variables se encargan de controlar la visibilidad de las secciones de la MainCard.
         const MainCardstyle = this.state.hideMainInfo ? {} : { display: 'none' };
         const PortfolioCardstyle = this.state.hideSkills ? {} : { display: 'none' };
         const SkillsCardstyle = this.state.hidePortfolio ? {} : { display: 'none' };
         const CardOptionsStyle = this.state.hideCardOptions ? {} : { display: 'none' };
 
-        //console.log(this.state.data['12345678'].code);
-
         //Metodo que retorna
         return (
             <div className="container-fluid">
-
                 <div className="row justify-content-center">
-
                     {/* Componente Header */}
                     <Header name={"Miguel A. Mejia"} type={"2146050"} />
                     <div className="col-12" id="total-search">  <p>Se encontraron {this.state.dataCount} resultado(s).</p>  </div>
-
-                    {/* <------- Component Big Card ---------->*/}
                     <div className="w-100"></div>
+
+                    
+                     {/* <------- Component Big Card ---------->*/}
                     <div className="col-lg-3 col-md-5">
+                        <div id="card-base" className="small-card-base animated flipInY">
 
-
-
-                        <div id="card-base" className="small-card-base animated flipInY"> 
-
+                            {/* <------- Componente Card ---------->*/}
                             <div className="no-margin no-padding" style={MainCardstyle}>
                                 <Card func={this.displayMainCard} state={this} name={this.state.currentData.name + " " + this.state.currentData.lastname} code={this.state.currentData.code} phone={this.state.currentData.phone} email={this.state.currentData.email} img="img/Me.jpg" />
                             </div>
 
                             <img id="card-profile-image" src="img/Mes.jpg"></img>
-
-
                             <div className="row align-items-end justify-content-center" style={CardOptionsStyle}>
-
+                                {/* <------- Botones de interaccion de la MainCard ---------->*/}
                                 <div className="col-12 float-left" id="card-info-back">
                                     <button type="button" className="no-button-style" onClick={() => this.displayMainCard(this, 1)}>
                                         <div> <img src="icons/left-arrow.png"></img></div>
                                     </button>
                                 </div>
-                                <div className="col-12" id="card-info-name">
-                                    <p>{this.state.currentData.name + " " + this.state.currentData.lastname}</p>
+                                <div className="col-10" id="card-info-name">
+                                    <p id="card-info-fullname">{this.state.currentData.name + " " + this.state.currentData.lastname}</p>
                                     <p id="card-info-job"> Game Designer </p>
                                 </div>
                                 <div className="col-12" id="card-options">
@@ -264,7 +271,7 @@ export default class Home extends Component {
                                 </div>
 
 
-                                {/* <------------------------------ All Works ----------------------------->*/}
+                                {/* <------------------------------ Componentes Work ------------------------------->*/}
                                 <div className="col-12" id="card-portfolio" style={SkillsCardstyle}>
                                     <div className="row justify-content-center align-items-center text-center">
 
@@ -291,10 +298,9 @@ export default class Home extends Component {
 
                                     </div>
                                 </div>
-                                {/* <------------------------------ All Works ----------------------------->*/}
 
 
-                                {/* <------------------------------ All Skills ----------------------------->*/}
+                                {/* <------------------------------ Componentes Skills ----------------------------->*/}
                                 <div className="col-12" id="card-skills" style={PortfolioCardstyle}>
                                     <div className="row justify-content-center align-items-center text-center">
 
@@ -321,30 +327,18 @@ export default class Home extends Component {
 
                                     </div>
                                 </div>
-                                {/* <------------------------------ All Skills ----------------------------->*/}
 
                             </div>
                         </div>
-
-
-
                     </div>
 
 
-
-                    {/* <------- Component Small Cards ---------->*/}
+                    {/* <------- Componentes Small Cards ---------->*/}
                     <div className="col-lg-9 col-md-7">
                         <div className="row justify-content-left">
-
                             {this.renderSmallCards()}
-
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
         );
